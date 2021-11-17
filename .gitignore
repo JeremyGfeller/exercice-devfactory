@@ -6,3 +6,4 @@ app/.DS_Store
 app/Http/.DS_Store
 storage/framework/.DS_Store
 storage/.DS_Store
+resources/.DS_Store
