@@ -1,7 +1,21 @@
 <template>
-  <p>Test</p>
-</template>
 
+  <div class="row mt-4">
+
+    <div class="col-sm-4 mb-4">
+      <div class="card">
+        <h5 class="card-header">Level 1</h5>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" v-for="fParent in getParents" :key="fParent.id"> 
+              {{ fParent.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 <script>
 
 export default {
@@ -10,6 +24,12 @@ export default {
       categories: [],
     }
   },
+  computed: {
+    getParents() {
+      var arr = [];
+      this.categories.forEach((value, index) => {
+        if(value.parent_id === null) arr.push(value);
+      });
   mounted() {
     this.getCategories();
   },
