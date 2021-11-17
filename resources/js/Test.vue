@@ -14,14 +14,47 @@
         </div>
       </div>
     </div>
+
+    <div class="col-sm-4 mb-4" v-show="firstChild">
+      <div class="card">
+        <h5 class="card-header">Level 2</h5>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" v-for="fChild in firstChilds" :key="fChild.id" v-on:click="searchChilds(1, fChild.id)"> 
+              {{ fChild.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 mb-4" v-show="secondChild">
+      <div class="card">
+        <h5 class="card-header">Level 3</h5>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" v-for="sChild in secondChilds" :key="sChild.id"> 
+              {{ sChild.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     
   </div>
+
+</template>
+
 <script>
 
 export default {
   data() {
     return {
       categories: [],
+      firstChilds: [],
+      secondChilds: [],
+      firstChild: false,
+      secondChild: false
     }
   },
   computed: {
