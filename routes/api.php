@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// The Api will return data from the DB
 Route::get('categories', 'App\Http\Controllers\Api\CategoryController@index');
