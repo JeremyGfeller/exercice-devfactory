@@ -30,6 +30,9 @@ export default {
       this.categories.forEach((value, index) => {
         if(value.parent_id === null) arr.push(value);
       });
+      return arr;
+    }
+  },
   mounted() {
     this.getCategories();
   },
