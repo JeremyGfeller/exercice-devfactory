@@ -58,6 +58,7 @@ export default {
     }
   },
   computed: {
+    // Filter the parents of the childrens 
     getParents() {
       var arr = [];
       this.categories.forEach((value, index) => {
@@ -67,9 +68,11 @@ export default {
     }
   },
   mounted() {
+    // Initialize data when the page is loading 
     this.getCategories();
   },
   methods : {
+    // Get all datas from the DB
     getCategories() {
       axios.get('/api/categories').then((response) => {
         this.categories = response.data.data
@@ -77,12 +80,14 @@ export default {
         console.log(error);
       })
     },
+    // Searching childs with the id of the parents 
     searchChilds: function(chk, id) {
       var arr = [];
       this.categories.forEach((value, index) => {
         if(value.parent_id === id) arr.push(value);
       });
 
+      // Check if the function come from the parents or the first childs
       if(chk == 0) {
         this.firstChilds = arr;
         this.firstChild = true;
